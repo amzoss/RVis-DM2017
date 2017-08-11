@@ -1,0 +1,33 @@
+---
+title: "Survey"
+author: "Angela Zoss"
+date: "8/10/2017"
+output: html_document
+---
+
+## Setup your environment
+
+```{r}
+
+# Load required libraries
+
+library(tidyverse)
+
+```
+
+## Load your data
+
+```{r}
+
+survey <- read_csv("data/Survey for Visualization in R.csv", 
+                   col_types = cols(Timestamp = col_datetime(format="%D %R")))
+
+names(survey) <- c("Timestamp","Exp.R","Exp.RStudio","Exp.Tidyverse","Exp.ggplot2","Exp.RShiny","VisR","GraphicDesign","Both","R.Freq")
+
+```
+
+## Experiment with charts
+
+```{r}
+
+```

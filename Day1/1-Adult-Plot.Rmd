@@ -1,0 +1,187 @@
+---
+title: "Adult"
+author: "Angela Zoss"
+date: "8/10/2017"
+output: 
+  html_document: 
+    self_contained: no
+    toc: yes
+    toc_float: yes
+---
+
+```{r}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Setup your environment
+
+```{r}
+
+# Load required libraries
+
+library(tidyverse)
+
+```
+
+## Load your data
+
+```{r}
+
+# data comes from https://www.kaggle.com/uciml/adult-census-income
+
+# adding a few settings to correct the data types of a couple of the columns
+
+adult <- read_csv("data/adult.csv", na="?")
+
+```
+
+## Try a few charts
+
+### Bar charts
+
+```{r}
+
+# Bar chart, automatically counting number of observations
+
+ggplot(adult) +
+  geom_bar(aes(sex))
+
+```
+
+```{r}
+
+# Bar chart, using another column for the length
+
+ggplot(adult) +
+  geom_col(aes(x=sex, y=capital.loss))
+
+# or you can use geom_bar and just change the default statistical function ("stat"), 
+# which is normally "count"
+
+ggplot(adult) +
+  geom_bar(aes(sex, capital.loss), stat="identity")
+
+# What does it do when you have multiple records for each category?
+
+adult %>% group_by(sex) %>% summarise(total = sum(capital.loss))
+
+```
+
+
+```{r}
+
+# Bar chart, using another column for length and specifying the summary function
+
+ggplot(adult) +
+  geom_bar(aes(sex, capital.loss), stat="summary", fun.y="mean")
+
+# In this case, geom_col doesn't work
+
+ggplot(adult) +
+  geom_col(aes(sex, capital.loss), stat="summary", fun.y="mean")
+
+```
+
+```{r}
+
+# You can also summarize numerical variables with a bar chart, but consider using histogram or density instead
+
+ggplot(adult) +
+  geom_bar(aes(age))
+
+ggplot(adult) +
+  geom_histogram(aes(age))
+
+ggplot(adult) +
+  geom_histogram(aes(age), binwidth = 1)
+
+ggplot(adult) +
+  geom_density(aes(age))
+
+```
+```{r}
+
+# Adding another category - do you want to stack or dodge or fill?
+
+# By default, a new category fills the bar (position="stack")
+ggplot(adult) +
+  geom_bar(aes(sex, fill=race))
+
+# Change position to "dodge" for side-by-side bars
+ggplot(adult) +
+  geom_bar(aes(sex, fill=race), position="dodge")
+
+# Change position to "fill" for bars scaled up to 100%
+ggplot(adult) +
+  geom_bar(aes(sex, fill=race), position="fill")
+
+```
+
+```{r}
+
+# Pie charts are...  weird.  In ggplot2, you make a pie chart by taking a single stacked bar and changing the coordinate system to coord_polar.
+
+ggplot(adult) +
+  geom_bar(aes(x="", fill=sex))
+
+ggplot(adult) +
+  geom_bar(aes(x="", fill=sex)) +
+  coord_polar("y")
+
+# Can get rid of hole in the middle by specifying width = 1
+
+ggplot(adult) +
+  geom_bar(aes(x="", fill=sex), width=1) +
+  coord_polar("y")
+
+
+
+```
+
+### Scatter plots
+
+```{r}
+
+# Scatter plots can show relationships between numerical variables, but be careful of overplotting (dots stacked on top of each other)
+
+ggplot(adult) +
+  geom_point(aes(age, capital.loss))
+
+ggplot(adult) +
+  geom_bin2d(aes(age, capital.loss))
+
+# Note: if your counts are heavily skewed, you can apply a transformation on the color scale
+
+ggplot(adult) +
+  geom_bin2d(aes(age, capital.loss)) +
+  scale_fill_continuous(trans="log10")
+
+```
+
+### Line charts
+
+```{r}
+
+# Line charts don't include any inherent summary, so individual data points get mapped and connected with a line
+
+ggplot(adult) + 
+  geom_line(aes(x=age, y=capital.loss))
+
+ggplot(adult) + 
+  geom_line(aes(x=age, y=capital.loss)) +
+  geom_point(aes(x=age, y=capital.loss))
+
+# You can add your own function to summarize all of the y values at the same x value
+
+ggplot(adult) + 
+  geom_line(aes(x=age, y=capital.loss), stat="summary", fun.y=mean)
+
+# Alternately, you can use geom_smooth to calculate a variety of summary lines
+
+ggplot(adult) + 
+  geom_smooth(aes(x=age, y=capital.loss))
+
+ggplot(adult) + 
+  geom_smooth(aes(x=age, y=capital.loss), method = "lm")
+
+```

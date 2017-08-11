@@ -1,0 +1,39 @@
+---
+title: "Student Alcohol Consumption"
+author: "Angela Zoss"
+date: "8/11/2017"
+  html_document:
+    self_contained: no
+    toc: yes
+    toc_float: yes
+---
+
+```{r}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Setup your environment
+
+```{r}
+
+# Load required libraries
+
+library(tidyverse)
+
+```
+
+## Load your data
+
+```{r}
+
+# Data from https://www.kaggle.com/uciml/student-alcohol-consumption
+
+d1 <- read_csv("student-mat.csv")
+d1$course <- "Math"
+
+d2 <- read_csv("student-por.csv")
+d2$course <- "Portuguese"
+
+students <- merge(d1,d2,by=c("school","sex","age","address","famsize","Pstatus","Medu","Fedu","Mjob","Fjob","reason","nursery","internet"))
+
+```

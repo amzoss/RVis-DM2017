@@ -1,0 +1,65 @@
+---
+title: "Output"
+author: "Angela Zoss"
+date: "8/11/2017"
+output: html_document
+---
+
+## Setup your environment
+
+```{r}
+
+# Load required libraries
+
+library(tidyverse)
+
+```
+
+## Load your data
+
+```{r}
+
+survey <- read_csv("Survey for Visualization in R.csv", 
+                   col_types = cols(Timestamp = col_datetime(format="%D %R")))
+
+names(survey) <- c("Timestamp","Exp.R","Exp.RStudio","Exp.Tidyverse","Exp.ggplot2","Exp.RShiny","VisR","GraphicDesign","Both","R.Freq")
+
+```
+
+## Create and save charts
+
+```{r}
+
+ggplot(survey) +
+  geom_histogram(aes(Timestamp)) +
+  labs(title="A histogram",
+       x="Time of survey (binned)",
+       y="Number of respondents")
+
+# On my machine, this creates a file 2100 pixels wide and 2100 tall; YMMV
+ggsave("simple_save.png")
+
+# Weird aspect ration; try setting width and height
+# This uses a default unit of inches and a default dpi of 300
+ggsave("ratio_save.png", width=3, height=2)
+
+# That's pretty small; let's make it big enough to fit across a letter page
+ggsave("ratio_save2.png", width=6.5, height=4.25)
+
+# What if we need a big version for a poster?
+ggsave("big_save.png", width=12, height=9)
+
+# But the text is now way too small!
+
+# This will look very strange in RStudio, but be patient!
+ggplot(survey) +
+  geom_histogram(aes(Timestamp)) +
+  labs(title="A histogram",
+       x="Time of survey (binned)",
+       y="Number of respondents") +
+  theme_grey(base_size=20)
+
+# This has a nice high resolution, and the text is a more reasonable size
+ggsave("big_base.png", width=12, height=9)
+
+```
