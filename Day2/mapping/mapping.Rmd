@@ -66,9 +66,9 @@ dot_transparency <- 0.5 #can change this if the dots are too light or dark
 # three different ggplot pieces; one for all the counties, one for calaveras, and one for the lat/lon points
 map_counties <- geom_polygon(data = county_map, aes(x = long, y = lat, group=group), fill=default_county_color, color=default_county_border)
 
-map_calaveras <- geom_polygon(data = county_map[county_map$subregion=="calaveras",], aes(x = long, y = lat), fill=cal_county_color, color = cal_county_border, size=1)
+map_calaveras <- geom_polygon(data = county_map[county_map$subregion=="calaveras",], aes(x = long, y = lat, group=group), fill=cal_county_color, color = cal_county_border, size=1)
 
-map_points <- geom_point(aes(x=point_locations$Longitude, y=point_locations$Latitude), color=dot_color, size=dot_size, alpha=dot_transparency)
+map_points <- geom_point(data=point_locations, aes(x=Longitude, y=Latitude), color=dot_color, size=dot_size, alpha=dot_transparency)
 
 # add everything into a single map object, then display the map
 mp <- ggplot()

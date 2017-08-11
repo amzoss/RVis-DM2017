@@ -37,7 +37,7 @@ ggplot(survey) +
        y="Number of respondents")
 
 # On my machine, this creates a file 2100 pixels wide and 2100 tall; YMMV
-ggsave("simple_save.png")
+ggsave("Figs/simple_save.png")
 
 # Weird aspect ration; try setting width and height
 # This uses a default unit of inches and a default dpi of 300
