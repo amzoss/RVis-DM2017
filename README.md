@@ -19,7 +19,7 @@ The course will take a project-based approach to learning best practices for vis
 * Visualization for communication
 * Interactive visualizations with Shiny
 
-###Prerequisites and Requirements
+### Prerequisites and Requirements
 
 This course assumes basic familiarity with R -- e.g., R syntax, data structures, development environments. Most visualizations will be created with ggplot2 and other tidy verse libraries, but prior experience with those libraries is not required. In order to participate in class exercises, participants should bring a laptop where current versions of R and RStudio have been installed and where the participant has sufficient privileges to install new R packages on demand.
 
