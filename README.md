@@ -27,6 +27,7 @@ This course assumes basic familiarity with R -- e.g., R syntax, data structures,
 
 ### Day One (ggplot2)
 
+* [Slides](Day1/VisualizationInRDay1.pdf)
 * [Learning all (or most of) the plot options](Day1/1-Adult-Plot.Rmd)
 * [Playing with survey data](Day1/2-Survey.Rmd)
 * [Learning all (or most of) the design options](Day1/3-Adult-Design.Rmd)
@@ -34,6 +35,7 @@ This course assumes basic familiarity with R -- e.g., R syntax, data structures,
 
 ### Day Two (Shiny, ggplot2 cont'd.)
 
+* [Slides](Day2/VisualizationInRDayTwo.pdf)
 * [Building a toy app with a single chart](Day2/sample%20app)
 * [Example app - El Niño data](Day2/el%20nino)
 * [Example app - research data](Day2/ratings)
