@@ -50,3 +50,22 @@ This course assumes basic familiarity with R -- e.g., R syntax, data structures,
 * Other Data and Visualization Services Workshop videos
   * [Main workshop series](http://bit.ly/DVSvideos)
   * [R we having fun yet? series](https://rfun.netlify.com/)
+* ggplot2 Resources
+  * [ggplot2 Reference](http://ggplot2.tidyverse.org/reference/)
+  * [R Graphics Cookbook](http://www.cookbook-r.com/Graphs/index.html)
+  * [ggplot2: Elegant Graphs for Data Analysis](http://ggplot2.org/book/)
+  * [R for Data Science book, Data Visualization chapter](http://r4ds.had.co.nz/data-visualisation.html)
+  * [R for Data Science book, Graphics for Communication chapter](http://r4ds.had.co.nz/graphics-for-communication.html)
+  * [ggplot2 Cheatsheet](http://bit.ly/ggplot2-cheatsheet)
+* Shiny Resources
+  * [Shiny Written Tutorial](http://shiny.rstudio.com/tutorial/)
+  * [Shiny Layout Guide](http://shiny.rstudio.com/articles/layout-guide.html)
+  * [Shiny Widget Gallery](http://shiny.rstudio.com/gallery/widget-gallery.html)
+  * [Shiny HTML Tags Glossary](http://shiny.rstudio.com/articles/tag-glossary.html)
+  * [Shiny Apps](http://www.shinyapps.io/)
+  * [Shiny Articles](http://shiny.rstudio.com/articles/)
+  * [Shiny Funtions Reference](https://shiny.rstudio.com/reference/shiny/latest/)
+  * [Shiny Cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/01/shiny-cheatsheet.pdf)
+* Example Shiny Apps
+  * [Shiny Gallery](https://shiny.rstudio.com/gallery/)
+  * [Statistics Education Shiny Apps](http://www2.stat.duke.edu/~mc301/shinyed/)
